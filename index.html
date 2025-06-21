@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="">
+  <title>Jacob Thomas Khalil</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="styles/styles.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/image/icon.png">
+<!-- 
+  <link rel="preload" as="image" href="image/hero-header1_top-600.jpg" />
+  <link rel="preload" as="image" href="image/hero-header1_bottom-600.jpg" />
+ -->
+</head>
+<body>
+
+<header class="hero-header">
+  <div class="slider-wrapper">
+    <div class="slider-track">
+
+      <!-- Slide 1 -->
+      <img 
+        src="image/hero-header1_top-600.jpg" 
+        srcset="image/hero-header1_top-600.jpg 600w, image/hero-header1_top-900.jpg 900w, image/hero-header1_top-1200.jpg 1200w"
+        sizes="(max-width: 768px) 100vw, 100vw"
+        alt="Slide 1 Top" 
+        class="slide-img" 
+        loading="lazy">
+
+      <img 
+        src="image/hero-header1_bottom-600.jpg" 
+        srcset="image/hero-header1_bottom-600.jpg 600w, image/hero-header1_bottom-900.jpg 900w, image/hero-header1_bottom-1200.jpg 1200w"
+        sizes="(max-width: 768px) 100vw, 100vw"
+        alt="Slide 1 Bottom" 
+        class="slide-img" 
+        loading="lazy">
+
+      <!-- Slide 2 -->
+      <img 
+        src="image/hero-header2_top-600.jpg" 
+        srcset="image/hero-header2_top-600.jpg 600w, image/hero-header2_top-900.jpg 900w, image/hero-header2_top-1200.jpg 1200w"
+        sizes="(max-width: 768px) 100vw, 100vw"
+        alt="Slide 2 Top" 
+        class="slide-img" 
+        loading="lazy">
+
+      <img 
+        src="image/hero-header2_bottom-600.jpg" 
+        srcset="image/hero-header2_bottom-600.jpg 600w, image/hero-header2_bottom-900.jpg 900w, image/hero-header2_bottom-1200.jpg 1200w"
+        sizes="(max-width: 768px) 100vw, 100vw"
+        alt="Slide 2 Bottom" 
+        class="slide-img" 
+        loading="lazy">
+
+      <!-- Slide 3 -->
+      <img 
+        src="image/hero-header3_top-600.jpg" 
+        srcset="image/hero-header3_top-600.jpg 600w, image/hero-header3_top-900.jpg 900w, image/hero-header3_top-1200.jpg 1200w"
+        sizes="(max-width: 768px) 100vw, 100vw"
+        alt="Slide 3 Top" 
+        class="slide-img" 
+        loading="lazy">
+
+      <img 
+        src="image/hero-header3_bottom-600.jpg" 
+        srcset="image/hero-header3_bottom-600.jpg 600w, image/hero-header3_bottom-900.jpg 900w, image/hero-header3_bottom-1200.jpg 1200w"
+        sizes="(max-width: 768px) 100vw, 100vw"
+        alt="Slide 3 Bottom" 
+        class="slide-img" 
+        loading="lazy">
+
+    </div>
+  </div>
+
+<button class="hamburger hamburger--collapse" type="button" id="hamburger" aria-label="Menu-button" aria-controls="menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+
+<div id="menu" class="overlay-menu">
+  <div class="overlay-content">
+  <a href="/">Home</a>
+    <a href="/fashion">Fashion</a>
+    <a href="/illustration">Illustration</a>
+    <a href="/painting">Painting</a>
+    <a href="/photography">Photography</a>
+    <a href="/poetry">Poetry</a> 
+</div>
+</header>
+
+
+<section class="archive-section">
+  <div class="text-row" style="margin-top: 2rem;">
+  <p><b>Jacob Thomas Khalil</b></p>
+    <a href="/fashion">Fashion</a>
+    <a href="/illustration">Illustration</a>
+    <a href="/painting">Painting</a>
+    <a href="/photography">Photography</a>
+    <a href="/poetry">Poetry</a>
+  </div>
+</section>
+ 
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="tel:5038475055" target="_blank.jpg" aria-label="Telephone">
+  <i style="font-size:24px" aria-hidden="true" class="fa">&#xf095;</i>
+  </a>
+  <a href="mailto:jacobsmaskoff@gmail.com" target="_blank.jpg" aria-label="Email">
+  <i style="font-size:24px" aria-hidden="true" class="fa">&#xf0e0;</i>
+  </a>
+    <a href="https://www.instagram.com/jacobsmaskoff/" target="_blank.jpg" aria-label="Instagram">
+      <i class="fa fa-instagram" aria-hidden="true" style="font-size:24px"></i>
+    </a>
+  </div>
+  <div class="footer-credit">
+  &copy; 2025 Jacob Thomas Khalil.
+  </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide-img');
+  const slideCount = slides.length;
+
+  let currentIndex = 0;
+  const intervalTime = 5000;
+  let interval;
+
+  function moveToSlide(index) {
+    track.style.transition = 'transform 1s ease-in-out';
+    track.style.transform = `translateY(-${index * 100}vh)`;
+  }
+
+  function resetToStart() {
+    track.style.transition = 'none';
+    track.style.transform = 'translateY(0)';
+    currentIndex = 0;
+  }
+
+  function startSlideshow() {
+    interval = setInterval(() => {
+      currentIndex++;
+      moveToSlide(currentIndex);
+      if (currentIndex >= slideCount - 1) {
+        setTimeout(resetToStart, 1000);
+      }
+    }, intervalTime);
+  }
+
+  function stopSlideshow() {
+    clearInterval(interval);
+  }
+
+  startSlideshow();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopSlideshow();
+    } else {
+      startSlideshow();
+    }
+  });
+});
+</script>
+
+
+
+<script src="main.min.js" type="text/javascript"></script>
+
+</body>
+</html>
