@@ -16,51 +16,15 @@
 </head>
 <body>
 
-<header class="hero-header" style="padding:0;margin:0;">
-  <div class="slider-wrapper">
-    <div class="slider-track">
-      <div class="slide-container active">
-        <img 
-          src="/image/headers/hero-header1_400.webp" 
-          srcset="/image/headers/hero-header1_400.webp 400w, /image/headers/hero-header1_800.webp 800w, /image/headers/hero-header1_1200.webp 1200w"
-          sizes="(max-width: 768px) 100vw, 100vw"
-          alt="Hero Header 1"
-          class="slide-img"
-          loading="lazy"
-        >
-      </div>
-      <div class="slide-container">
-        <img 
-          src="/image/headers/hero-header2_400.webp" 
-          srcset="/image/headers/hero-header2_400.webp 400w, /image/headers/hero-header2_800.webp 800w, /image/headers/hero-header2_1200.webp 1200w"
-          sizes="(max-width: 768px) 100vw, 100vw"
-          alt="Hero Header 2"
-          class="slide-img"
-          loading="lazy"
-        >
-      </div>
-      <div class="slide-container">
-        <img 
-          src="/image/headers/hero-header3_400.webp" 
-          srcset="/image/headers/hero-header3_400.webp 400w, /image/headers/hero-header3_800.webp 800w, /image/headers/hero-header3_1200.webp 1200w"
-          sizes="(max-width: 768px) 100vw, 100vw"
-          alt="Hero Header 3"
-          class="slide-img"
-          loading="lazy"
-        >
-      </div>
-    </div>
-  </div>
+<header>
 
-
-
-<button class="hamburger hamburger--collapse" type="button" id="hamburger" aria-label="Menu-button" aria-controls="menu">
+  <button class="hamburger hamburger--collapse" type="button" id="hamburger" aria-label="Menu-button" aria-controls="menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
   </span>
-</button>
+  </button>
 
-<div id="menu" class="overlay-menu">
+  <div id="menu" class="overlay-menu">
   <div class="overlay-content">
   <a href="/">Home</a>
     <a href="/fashion">Fashion</a>
@@ -68,12 +32,12 @@
     <a href="/painting">Painting</a>
     <a href="/photography">Photography</a>
     <a href="/poetry">Poetry</a> 
-</div>
+  </div>
+
 </header>
 
-
 <section class="archive-section">
-  <div class="text-row" style="margin-top: 2rem;">
+  <div class="text-row">
   <p><b>Jacob Thomas Khalil</b></p>
     <a href="/fashion">Fashion</a>
     <a href="/illustration">Illustration</a>
@@ -82,7 +46,22 @@
     <a href="/poetry">Poetry</a>
   </div>
 </section>
- 
+
+<section class="parallax-row">
+  <div class="parallax-half left">
+    <picture>
+      <source srcset="/image/headers/hero-header1_400.webp 400w, /image/headers/hero-header1_800.webp 800w, /image/headers/hero-header1_1200.webp 1200w" sizes="50vw" type="image/webp">
+      <img src="/image/headers/hero-header1_800.webp" alt="Hero 1">
+    </picture>
+  </div>
+  <div class="parallax-half right">
+    <picture>
+      <source srcset="/image/headers/hero-header2_400.webp 400w, /image/headers/hero-header2_800.webp 800w, /image/headers/hero-header2_1200.webp 1200w" sizes="50vw" type="image/webp">
+      <img src="/image/headers/hero-header2_800.webp" alt="Hero 2">
+    </picture>
+  </div>
+</section>
+
 
 <!-- Footer -->
 <footer class="site-footer">
@@ -102,89 +81,22 @@
   </div>
 </footer>
 
+<script src="main.min.js" type="text/javascript"></script>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const track = document.querySelector('.slider-track');
-  const slides = Array.from(track.querySelectorAll('.slide-container'));
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-  let timer = null;
-  const intervalTime = 5000;
-  const halfTime = intervalTime / 2;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
 
-  // Set up slide containers and images for vertical cropping
-  slides.forEach(slide => {
-    slide.classList.remove('active');
-    slide.style.opacity = 0;
-    slide.style.pointerEvents = 'none';
-    slide.style.position = 'absolute';
-    slide.style.top = 0;
-    slide.style.left = 0;
-    slide.style.width = '100vw';
-    slide.style.height = '100vh';
-    slide.style.overflow = 'hidden';
-    const img = slide.querySelector('img');
-    img.style.height = '200vh';
-    img.style.width = '100vw';
-    img.style.objectFit = 'cover';
-    img.style.transition = 'transform 1.5s cubic-bezier(.77,0,.18,1)';
-    img.style.transform = 'translateY(0)';
-  });
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      const img = slide.querySelector('img');
-      if (i === index) {
-        slide.classList.add('active');
-        img.style.transform = 'translateY(0)';
-      } else {
-        slide.classList.remove('active');
-        img.style.transform = 'translateY(0)';
-      }
-    });
-  }
-
-  function animateSlide() {
-    const img = slides[currentIndex].querySelector('img');
-    img.style.transform = 'translateY(-100vh)';
-  }
-
-  function startSlideshow() {
-    clearTimers();
-    showSlide(currentIndex);
-    timer = setTimeout(() => {
-      animateSlide();
-      timer = setTimeout(() => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        startSlideshow();
-      }, halfTime);
-    }, halfTime);
-  }
-
-  function clearTimers() {
-    if (timer) clearTimeout(timer);
-    timer = null;
-  }
-
-  startSlideshow();
-
-  document.addEventListener('visibilitychange', () => {
-    clearTimers();
-    if (!document.hidden) startSlideshow();
-  });
-
-  track.addEventListener('click', () => {
-    clearTimers();
-    currentIndex = (currentIndex + 1) % totalSlides;
-    startSlideshow();
+  document.querySelectorAll('.parallax-half img').forEach((img, i) => {
+    // Parallax: image is 100vh, container is 50vh, so max shift is 50vh
+    const maxShift = window.innerHeight / 2;
+    let shift = scrollY * 0.7; // adjust 0.7 for more/less effect
+    if (shift > maxShift) shift = maxShift;
+    if (shift < 0) shift = 0;
+    img.style.transform = `translateY(-${shift}px)`;
   });
 });
 </script>
-
-
-
-
-<script src="main.min.js" type="text/javascript"></script>
 
 </body>
 </html>
