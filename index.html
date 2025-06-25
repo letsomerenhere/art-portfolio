@@ -74,6 +74,7 @@
     </div>
   </div>
 
+
 <button class="hamburger hamburger--collapse" type="button" id="hamburger" aria-label="Menu-button" aria-controls="menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -121,18 +122,18 @@
   &copy; 2025 Jacob Thomas Khalil.
   </div>
 </footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.slider-track');
   const slides = document.querySelectorAll('.slide-img');
-  const slideCount = slides.length;
-
+  const totalSlides = slides.length;
   let currentIndex = 0;
-  const intervalTime = 5000;
+  let intervalTime = 5000;
   let interval;
 
   function moveToSlide(index) {
-    track.style.transition = 'transform 1s ease-in-out';
+    track.style.transition = 'transform 3s ease';
     track.style.transform = `translateY(-${index * 100}vh)`;
   }
 
@@ -142,13 +143,18 @@ document.addEventListener('DOMContentLoaded', () => {
     currentIndex = 0;
   }
 
+  function nextSlide() {
+    currentIndex++;
+    if (currentIndex >= totalSlides) {
+      resetToStart();
+    } else {
+      moveToSlide(currentIndex);
+    }
+  }
+
   function startSlideshow() {
     interval = setInterval(() => {
-      currentIndex++;
-      moveToSlide(currentIndex);
-      if (currentIndex >= slideCount - 1) {
-        setTimeout(resetToStart, 1000);
-      }
+      nextSlide();
     }, intervalTime);
   }
 
@@ -156,17 +162,24 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(interval);
   }
 
+  // Start auto-slideshow
   startSlideshow();
 
+  // Pause/resume on tab switch
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stopSlideshow();
-    } else {
-      startSlideshow();
-    }
+    if (document.hidden) stopSlideshow();
+    else startSlideshow();
+  });
+
+  // Advance on click
+  track.addEventListener('click', () => {
+    stopSlideshow();
+    nextSlide();
+    startSlideshow();
   });
 });
 </script>
+
 
 
 
