@@ -16,63 +16,42 @@
 </head>
 <body>
 
-<header class="hero-header">
+<header class="hero-header" style="padding:0;margin:0;">
   <div class="slider-wrapper">
     <div class="slider-track">
-
-      <!-- Slide 1 -->
-      <img 
-        src="image/hero-header1_top-600.jpg" 
-        srcset="image/hero-header1_top-600.jpg 600w, image/hero-header1_top-900.jpg 900w, image/hero-header1_top-1200.jpg 1200w"
-        sizes="(max-width: 768px) 100vw, 100vw"
-        alt="Slide 1 Top" 
-        class="slide-img" 
-        loading="lazy">
-
-      <img 
-        src="image/hero-header1_bottom-600.jpg" 
-        srcset="image/hero-header1_bottom-600.jpg 600w, image/hero-header1_bottom-900.jpg 900w, image/hero-header1_bottom-1200.jpg 1200w"
-        sizes="(max-width: 768px) 100vw, 100vw"
-        alt="Slide 1 Bottom" 
-        class="slide-img" 
-        loading="lazy">
-
-      <!-- Slide 2 -->
-      <img 
-        src="image/hero-header2_top-600.jpg" 
-        srcset="image/hero-header2_top-600.jpg 600w, image/hero-header2_top-900.jpg 900w, image/hero-header2_top-1200.jpg 1200w"
-        sizes="(max-width: 768px) 100vw, 100vw"
-        alt="Slide 2 Top" 
-        class="slide-img" 
-        loading="lazy">
-
-      <img 
-        src="image/hero-header2_bottom-600.jpg" 
-        srcset="image/hero-header2_bottom-600.jpg 600w, image/hero-header2_bottom-900.jpg 900w, image/hero-header2_bottom-1200.jpg 1200w"
-        sizes="(max-width: 768px) 100vw, 100vw"
-        alt="Slide 2 Bottom" 
-        class="slide-img" 
-        loading="lazy">
-
-      <!-- Slide 3 -->
-      <img 
-        src="image/hero-header3_top-600.jpg" 
-        srcset="image/hero-header3_top-600.jpg 600w, image/hero-header3_top-900.jpg 900w, image/hero-header3_top-1200.jpg 1200w"
-        sizes="(max-width: 768px) 100vw, 100vw"
-        alt="Slide 3 Top" 
-        class="slide-img" 
-        loading="lazy">
-
-      <img 
-        src="image/hero-header3_bottom-600.jpg" 
-        srcset="image/hero-header3_bottom-600.jpg 600w, image/hero-header3_bottom-900.jpg 900w, image/hero-header3_bottom-1200.jpg 1200w"
-        sizes="(max-width: 768px) 100vw, 100vw"
-        alt="Slide 3 Bottom" 
-        class="slide-img" 
-        loading="lazy">
-
+      <div class="slide-container active">
+        <img 
+          src="/image/headers/hero-header1_400.webp" 
+          srcset="/image/headers/hero-header1_400.webp 400w, /image/headers/hero-header1_800.webp 800w, /image/headers/hero-header1_1200.webp 1200w"
+          sizes="(max-width: 768px) 100vw, 100vw"
+          alt="Hero Header 1"
+          class="slide-img"
+          loading="lazy"
+        >
+      </div>
+      <div class="slide-container">
+        <img 
+          src="/image/headers/hero-header2_400.webp" 
+          srcset="/image/headers/hero-header2_400.webp 400w, /image/headers/hero-header2_800.webp 800w, /image/headers/hero-header2_1200.webp 1200w"
+          sizes="(max-width: 768px) 100vw, 100vw"
+          alt="Hero Header 2"
+          class="slide-img"
+          loading="lazy"
+        >
+      </div>
+      <div class="slide-container">
+        <img 
+          src="/image/headers/hero-header3_400.webp" 
+          srcset="/image/headers/hero-header3_400.webp 400w, /image/headers/hero-header3_800.webp 800w, /image/headers/hero-header3_1200.webp 1200w"
+          sizes="(max-width: 768px) 100vw, 100vw"
+          alt="Hero Header 3"
+          class="slide-img"
+          loading="lazy"
+        >
+      </div>
     </div>
   </div>
+
 
 
 <button class="hamburger hamburger--collapse" type="button" id="hamburger" aria-label="Menu-button" aria-controls="menu">
@@ -126,55 +105,77 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.slider-track');
-  const slides = document.querySelectorAll('.slide-img');
+  const slides = Array.from(track.querySelectorAll('.slide-container'));
   const totalSlides = slides.length;
   let currentIndex = 0;
-  let intervalTime = 5000;
-  let interval;
+  let timer = null;
+  const intervalTime = 5000;
+  const halfTime = intervalTime / 2;
 
-  function moveToSlide(index) {
-    track.style.transition = 'transform 3s ease';
-    track.style.transform = `translateY(-${index * 100}vh)`;
+  // Set up slide containers and images for vertical cropping
+  slides.forEach(slide => {
+    slide.classList.remove('active');
+    slide.style.opacity = 0;
+    slide.style.pointerEvents = 'none';
+    slide.style.position = 'absolute';
+    slide.style.top = 0;
+    slide.style.left = 0;
+    slide.style.width = '100vw';
+    slide.style.height = '100vh';
+    slide.style.overflow = 'hidden';
+    const img = slide.querySelector('img');
+    img.style.height = '200vh';
+    img.style.width = '100vw';
+    img.style.objectFit = 'cover';
+    img.style.transition = 'transform 1.5s cubic-bezier(.77,0,.18,1)';
+    img.style.transform = 'translateY(0)';
+  });
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      const img = slide.querySelector('img');
+      if (i === index) {
+        slide.classList.add('active');
+        img.style.transform = 'translateY(0)';
+      } else {
+        slide.classList.remove('active');
+        img.style.transform = 'translateY(0)';
+      }
+    });
   }
 
-  function resetToStart() {
-    track.style.transition = 'none';
-    track.style.transform = 'translateY(0)';
-    currentIndex = 0;
-  }
-
-  function nextSlide() {
-    currentIndex++;
-    if (currentIndex >= totalSlides) {
-      resetToStart();
-    } else {
-      moveToSlide(currentIndex);
-    }
+  function animateSlide() {
+    const img = slides[currentIndex].querySelector('img');
+    img.style.transform = 'translateY(-100vh)';
   }
 
   function startSlideshow() {
-    interval = setInterval(() => {
-      nextSlide();
-    }, intervalTime);
+    clearTimers();
+    showSlide(currentIndex);
+    timer = setTimeout(() => {
+      animateSlide();
+      timer = setTimeout(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        startSlideshow();
+      }, halfTime);
+    }, halfTime);
   }
 
-  function stopSlideshow() {
-    clearInterval(interval);
+  function clearTimers() {
+    if (timer) clearTimeout(timer);
+    timer = null;
   }
 
-  // Start auto-slideshow
   startSlideshow();
 
-  // Pause/resume on tab switch
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopSlideshow();
-    else startSlideshow();
+    clearTimers();
+    if (!document.hidden) startSlideshow();
   });
 
-  // Advance on click
   track.addEventListener('click', () => {
-    stopSlideshow();
-    nextSlide();
+    clearTimers();
+    currentIndex = (currentIndex + 1) % totalSlides;
     startSlideshow();
   });
 });

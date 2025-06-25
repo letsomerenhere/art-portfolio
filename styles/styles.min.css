@@ -4,6 +4,41 @@
 	overflow:hidden;
 	width:100%
 }
+/* Add to your styles/styles.min.css */
+.slider-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  transition: transform 1.5s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slide-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-container img {
+  height: 200vh;
+  width: 100vw;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+}
+
 .closebtn,.hamburger{
 	top:20px;
 	font-size:30px
@@ -36,24 +71,40 @@ body,html{
 }
 
 .slider-wrapper {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  overflow: hidden
-}
-.slider-track {
-  display:flex;
-  flex-direction:column;
-  transition:transform 1s ease-in-out;
-  will-change:transform
-}
-
-.slide-img {
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
-  display: block
+  overflow: hidden;
+  position: relative;
 }
+.slider-track {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.slide-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(.77,0,.18,1);
+}
+.slide-container.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+.slide-container img {
+  height: 200vh;
+  width: 100vw;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+  transform: translateY(0);
+}
+
 .hamburger{
 	position:fixed;
 	left:20px;
