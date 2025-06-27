@@ -1,6 +1,6 @@
-# Jacob Thomas Khalil — Art Portfolio
+# Art Portfolio - Freelance Work
 
-A minimal, responsive art portfolio for showcasing photography, illustration, poetry, painting, and fashion. Built with accessibility, performance, and elegance in mind.
+A minimal, responsive art portfolio for showcasing photography, illustration, poetry, painting, and fashion. Built with a focus on accessibility, performance, and thoughtful UI/UX design.
 
 ## Live Site
 [https://jacobthomaskhalil.net](https://jacobthomaskhalil.net)
