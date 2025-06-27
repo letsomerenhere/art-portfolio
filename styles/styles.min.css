@@ -13,48 +13,12 @@ body, html {
 	font-family:'Goudy Old Style',serif;
 	background-color:#fff
 }
-
-/* Make parallax-row full viewport height */
-.parallax-row {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 70vh;
+.hero-header {
   position: relative;
-  z-index: 1;
-  gap: 2vw; 
-  overflow: hidden;
+  height: auto;
+  max-width: 100%;
+  overflow-x: hidden;
 }
-
-.parallax-half {
-  flex: 1 1 0;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
-
-.parallax-half img {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  will-change: transform;
-  transition: transform 0.2s cubic-bezier(.77,0,.18,1);
-  display: block;
-  pointer-events: none;
-}
-/* Archive section sticky at top */
-.archive-section {
-  position: sticky;
-  top: 0;
-  background: transparent;
-  z-index: 5;
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.04); */
-  transition: box-shadow 0.3s;
-}
-
 
 /* Animate text in archive-section */
 .text-row {
@@ -165,95 +129,194 @@ body, html {
 	transform:translateY(20px);
 	transition:opacity .5s,transform .5s
 }
-.name-container{
-	padding:30px
-}
-.name{
-	display:flex;
-	flex-wrap:wrap;
-	justify-content:center;
-	text-align:center;
-	font-size:25px;
-	color:#2c2d42;
-	gap:2rem
-}
-.name h3{
-	font-size:20px;
-	color:#2c2d42;
-	font-weight:300;
-	align-items:center
-}
 
 .image-caption,.site-footer{
 	text-align:center;
 	font-family:'Goudy Old Style',serif;
 	color:#000
 }
+
 .archive-section .text-row{
 	display:flex;
 	flex-wrap:wrap;
 	justify-content:center;
 	text-align:center;
-	font-size:14px;
+	font-size:2rem;
 	line-height:1.5em;
 	color:#2c2d42;
-	gap:2rem
+	gap:2rem;
+	text-transform: uppercase;
+	font-weight:200;
 }
-.archive-section .text-row a{
+/* .archive-section .text-row a{
 	text-decoration:none;
 	color:#2c2d42;
 	font-weight:400
-}
+} */
 .archive-section .text-row a:hover,.footer-links a:hover,.image-caption a:hover .subtitle,.image-caption a:hover .title{
 	text-decoration:underline
 }
 .footer-links a,.image-caption a,.image-caption a .subtitle,.image-caption a .title{
 	text-decoration:none
 }
-/* .image-section{
-	display:flex;
-	flex-direction:column;
-	gap:3rem;
-	padding:0 4rem;
-	position:relative
+/* Slideshow container */
+.slideshow {
+  position: relative;
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
 }
-.floating-image-block{
-	width:100%;
-	max-width:100%;
-	position:relative
+
+/* Each slide image */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  object-fit: cover;
+  z-index: 0;
 }
-.floating-image-block img{
-	width:40%;
-	height:auto;
-	display:block;
-	margin:0 auto;
-	object-fit:contain;
-	position:relative;
-	transform:translateX(var(--x-offset));
-	transition:transform .4s
+
+/* Active slide */
+.slide.active {
+  opacity: 1;
+  z-index: 1;
 }
-.image-caption{
-	margin-top:1rem;
-	font-size:1rem
+
+/* Container settings */
+.feature-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  padding: 4rem 2rem;
 }
-.image-caption a{
-	color:inherit;
-	display:inline-block
+
+.feature-block img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
-.image-caption .title{
-	font-size:1.25rem;
-	text-transform:uppercase
-}
-.image-caption .subtitle{
-	font-size:1rem;
-	opacity:.7
-} */
 
 
+.feature-block img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #111;
+}
+
+/* offsets */
+.offset-left-small {
+  transform: translateX(-5%);
+}
+.offset-right-small {
+  transform: translateX(5%);
+}
+.offset-left-medium {
+  transform: translateX(-7%);
+}
+.offset-right-medium {
+  transform: translateX(10%);
+}
+.offset-float-up {
+  transform: translateY(-20px);
+}
+.offset-float-down {
+  transform: translateY(20px);
+}
+
+Floating / offset styles
+.offset-left {
+  align-self: flex-start;
+  transform: translateX(-10%);
+}
+.offset-right {
+  align-self: flex-end;
+  transform: translateX(10%);
+}
+.offset-center {
+  align-self: center;
+}
+.offset-left-small {
+  align-self: flex-start;
+  transform: translateX(-15%);
+}
+.offset-right-small {
+  align-self: flex-end;
+  transform: translateX(15%);
+}
+
+.offset-left-medium {
+  align-self: flex-start;
+  transform: translateX(-25%);
+}
+
+.offset-right-medium {
+  align-self: flex-end;
+  transform: translateX(25%);
+}
+
+.offset-left-large {
+  align-self: flex-start;
+  transform: translateX(-35%);
+}
+
+.offset-right-large {
+  align-self: flex-end;
+  transform: translateX(35%);
+}
+
+.offset-tilt-left {
+  align-self: flex-start;
+  transform: translateX(-20%) rotate(-2deg);
+}
+
+.offset-tilt-right {
+  align-self: flex-end;
+  transform: translateX(20%) rotate(2deg);
+}
+
+.offset-float-up {
+  align-self: center;
+  transform: translateY(-20px);
+}
+
+.offset-float-down {
+  align-self: center;
+  transform: translateY(20px);
+}
+
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .feature-block {
+    transform: none !important;
+    align-self: center;
+  }
+}
+
+
+
+/* footer */
 .site-footer{
 	width:100%;
+	text-align: center;
 	padding:2rem 1rem;
-	background-color:transparent
+	background-color:transparent;
+	color:#000
 }
 .footer-links{
 	margin-bottom:1rem
@@ -261,6 +324,7 @@ body, html {
 .footer-links a{
 	margin:0 10px;
 	color:inherit;
+	text-decoration:none;
 	font-size:.875rem;
 	letter-spacing:.05em
 }
@@ -268,63 +332,3 @@ body, html {
 	font-size:.75rem;
 	opacity:.7
 }
-
-
-/* @media (max-width:768px){
-	.image-section{
-		padding:2rem 1rem;
-		gap:3rem
-}
-	.floating-image-block img{
-		width:90%;
-		max-width:100%;
-		transform:none!important
-}
-	.floating-image-block{
-		padding:0;
-		margin-bottom:2rem
-}
-	.hamburger{
-		position:fixed;
-		top:20px;
-		left:20px;
-		z-index:100
-}
-	.overlay-content a{
-		font-size:18px;
-		margin:16px 0
-}
-	.footer-links{
-		gap:.5rem
-}
-	.footer-links a{
-		font-size:1rem
-}
-	.footer-credit{
-		font-size:.75rem
-}
-	.image-caption .title{
-		font-size:1.1rem
-}
-	.image-caption .subtitle{
-		font-size:.9rem
-}
-	.image-grid{
-		grid-template-columns:1fr;
-		position:relative;
-		height:100vh;
-		width:100%;
-		overflow:hidden
-}
-}
-
-.desktop-only {
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-}
- */
