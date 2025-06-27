@@ -305,7 +305,6 @@ cursor: pointer;
 }
 
 @media (max-width: 768px) {
-
   .overlay-content a {
     font-size: 1.2;
     margin: 1rem 0;
@@ -361,7 +360,7 @@ cursor: pointer;
 }
 
 @media (max-width: 425px) {
-  .name-container {
+.name-container {
     padding: 1.8rem 1rem;
   }
 
@@ -377,7 +376,6 @@ cursor: pointer;
 	gap: .5rem;
 	font-size: .8rem;
   }
-
 
   .hamburger {
     top: 10px;

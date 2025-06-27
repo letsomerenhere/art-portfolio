@@ -309,11 +309,10 @@ cursor: pointer;
     margin: 1rem 0;
   }
 
-  .archive-section .text-row {
-    gap: 1.2rem;
+ .archive-section .text-row {
+    gap: 1.8rem;
     font-size: 1rem;
   }
-
   .paint-grid {
     display: flex;
     flex-direction: column;

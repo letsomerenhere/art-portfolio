@@ -248,13 +248,12 @@ body,html{
 }
 
 @media (max-width: 768px) {
-
   .overlay-content a {
     font-size: 1.2;
     margin: 1rem 0;
   }
 
-  .archive-section .text-row {
+ .archive-section .text-row {
     gap: 1.8rem;
     font-size: 1rem;
   }
