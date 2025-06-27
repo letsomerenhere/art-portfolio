@@ -2,10 +2,10 @@
 
 A minimal, responsive art portfolio for showcasing photography, illustration, poetry, painting, and fashion. Built with accessibility, performance, and elegance in mind.
 
-## 🔗 Live Site
+## Live Site
 [https://jacobthomaskhalil.net](https://jacobthomaskhalil.net)
 
-## 🖼 Features
+## Features
 
 - Responsive layout optimized for mobile and desktop
 - Lazy-loaded images in modern WebP format
@@ -16,7 +16,7 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 - Modular CSS and JS structure
 - ARIA accessibility compliance
 
-## 🖼️ Tech Stack
+## Tech Stack
 
 - HTML5
 - CSS3
@@ -25,8 +25,8 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 - Font Awesome (icons)
 - PageSpeed & Lighthouse optimization techniques
 
-## 📁 Project Structure
-.
+## Project Structure
+
 ├── index.html
 ├── fashion/
 │   └── index.html
@@ -38,50 +38,23 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 │   └── index.html
 ├── poetry/
 │   └── index.html
-
 ├── assets/
 │   ├── fonts/
-│   │   └── [FontAwesome + other fonts]
 │   ├── images/
 │   │   ├── headers/
 │   │   ├── icon.png
 │   │   ├── fashion/
-│   │   │   ├── melancholic/
-│   │   │   ├── process/
-│   │   │   └── vesper-ix/
 │   │   ├── illustration/
-│   │   │   ├── digital/
-│   │   │   ├── fashion-sketch/
-│   │   │   ├── fine-art/
-│   │   │   └── printed-works/
 │   │   ├── painting/
 │   │   ├── photography/
-│   │   │   ├── andy/
-│   │   │   ├── angel-clover/
-│   │   │   ├── holy-unholy/
-│   │   │   ├── montauk/
-│   │   │   ├── new-york/
-│   │   │   ├── plum-beach/
-│   │   │   ├── portland/
-│   │   │   └── specters/
 │   │   └── poetry/
 │   ├── styles/
-│   │   ├── fancybox.css
-│   │   ├── [section].min.css (e.g., fashion.min.css)
-│   │   └── styles.min.css
 │   ├── scripts/
-│   │   ├── fancybox.umd.js
-│   │   └── main.min.js
 │   └── video/
-│       ├── digital-header.mp4
-│       ├── digital3.mp4
-│       ├── digital4.mp4
-│       └── printed-works7.mp4
-
 ├── README.md
 
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - HTML5 / CSS3 / JavaScript (vanilla)
 - [Fancybox v4](https://fancyapps.com/fancybox/)
@@ -89,7 +62,7 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 - Responsive images with `<picture>` + `srcset`
 - Page transitions and accessibility enhancements
 
-## ⚡️ PageSpeed Results
+## PageSpeed Results
 
 | Metric              | Desktop | Mobile |
 |---------------------|---------|--------|
@@ -103,7 +76,7 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
   - Render-blocking CSS (non-critical styles like Font Awesome or Hamburger.css)
   - Moderate Cumulative Layout Shift (CLS) caused by late-rendered hero text
 
-## 🧠 Optimization Notes
+## Optimization Notes
 
 - Images use `width` & `height` attributes to minimize layout shifts
 - Preload is used selectively for critical images
