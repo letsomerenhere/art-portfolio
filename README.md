@@ -28,38 +28,37 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 ## Project Structure
 
 ├── index.html
-|
+│
 ├── fashion/
-│   └── index.html
-|
+│ └── index.html
+│
 ├── illustration/
-│   └── index.html
-|
+│ └── index.html
+│
 ├── painting/
-│   └── index.html
-|
+│ └── index.html
+│
 ├── photography/
-│   └── index.html
-|
+│ └── index.html
+│
 ├── poetry/
-│   └── index.html
-|
+│ └── index.html
+│
 ├── assets/
-│   ├── fonts/
-│   ├── images/
-│   │   ├── headers/
-│   │   ├── icon.png
-│   │   ├── fashion/
-│   │   ├── illustration/
-│   │   ├── painting/
-│   │   ├── photography/
-│   │   └── poetry/
-│   ├── styles/
-│   ├── scripts/
-│   └── video/
-|
+│ ├── fonts/
+│ ├── images/
+│ │ ├── headers/
+│ │ ├── icon.png
+│ │ ├── fashion/
+│ │ ├── illustration/
+│ │ ├── painting/
+│ │ ├── photography/
+│ │ └── poetry/
+│ ├── styles/
+│ ├── scripts/
+│ └── video/
+│
 ├── README.md
-
 
 ## Tech Stack
 
