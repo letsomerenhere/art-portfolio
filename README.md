@@ -27,6 +27,7 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 
 ## Project Structure
 
+'''
 ├── index.html
 │
 ├── fashion/
@@ -59,6 +60,7 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 │ └── video/
 │
 ├── README.md
+'''
 
 ## Tech Stack
 
