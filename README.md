@@ -28,16 +28,22 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 ## Project Structure
 
 ├── index.html
+|
 ├── fashion/
 │   └── index.html
+|
 ├── illustration/
 │   └── index.html
+|
 ├── painting/
 │   └── index.html
+|
 ├── photography/
 │   └── index.html
+|
 ├── poetry/
 │   └── index.html
+|
 ├── assets/
 │   ├── fonts/
 │   ├── images/
@@ -51,6 +57,7 @@ A minimal, responsive art portfolio for showcasing photography, illustration, po
 │   ├── styles/
 │   ├── scripts/
 │   └── video/
+|
 ├── README.md
 
 
