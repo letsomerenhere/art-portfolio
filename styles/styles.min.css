@@ -1,99 +1,44 @@
-*{
-	margin:0;
-	padding:0;
-	box-sizing:border-box
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  scroll-behavior: smooth;
-  height:100%;
-	font-family:'Goudy Old Style',serif;
-	background-color:#fff
-}
-
-/* Make parallax-row full viewport height */
-.parallax-row {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 70vh;
-  position: relative;
-  z-index: 1;
-  gap: 2vw; 
-  overflow: hidden;
-}
-
-.parallax-half {
-  flex: 1 1 0;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
-
-.parallax-half img {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  will-change: transform;
-  transition: transform 0.2s cubic-bezier(.77,0,.18,1);
-  display: block;
-  pointer-events: none;
-}
-/* Archive section sticky at top */
-.archive-section {
-  position: sticky;
-  top: 0;
-  background: transparent;
-  z-index: 5;
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.04); */
-  transition: box-shadow 0.3s;
-}
-
-
-/* Animate text in archive-section */
-.text-row {
-  opacity: 7;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(.77,0,.18,1), transform 0.7s cubic-bezier(.77,0,.18,1);
-}
-.text-row.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Assign backgrounds using WebP images */
-.half-left {
-  background-image: url("/image/headers/hero-header1_1200.webp");
-}
-
-.half-right {
-  background-image: url("/image/headers/hero-header2_1200.webp");
-}
-
-/* Disable parallax on touch devices */
-@media only screen and (max-device-width: 1024px) {
-  .parallax-half {
-    background-attachment: scroll;
-  }
-}
 .closebtn,.hamburger{
 	top:20px;
 	font-size:30px
 }
+.archive-section .text-row, .name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+}
+
 .overlay-menu.open,.overlay-menu.open .overlay-content a{
 	opacity:1;
 	transform:translateY(0)
 }
+.archive-section,.name-container{
+	font-family:'Monotype Goudy Modern',serif
+}
 
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family:'Goudy Old Style',serif
+}
+body,html{
+	height:100%;
+	background-color:#fff;
+	overflow-x:hidden;
+	scroll-behavior: smooth;
+}
+.hero-header{
+	position:relative;
+	height:auto;
+	max-width:100%;
+	overflow-x:hidden
+}
 .hamburger{
 	position:fixed;
-	left:20px;
+	left:25px;
 	z-index:30
 }
 .hamburger--vortex .hamburger-inner::after,.hamburger--vortex .hamburger-inner::before{
@@ -125,33 +70,23 @@ body, html {
 	align-items:center;
 	justify-content:center
 }
-.name h3,.overlay-content{
-	text-align:center;
-	left:50%
-}
 .overlay-menu.open{
 	pointer-events:auto
 }
 .closebtn{
 	position:absolute;
-	top:20px;
 	right:30px;
-	font-size:30px;
 	color:#fff;
 	text-decoration:none;
 	z-index:26;
 	cursor:pointer
 }
-
-.archive-section,.name-container{
-	background:transparent;
-	color:#000;
-	font-family:'Monotype Goudy Modern',serif
-}
 .overlay-content{
 	position:absolute;
 	top:50%;
+	left:50%;
 	transform:translate(-50%,-50%);
+	text-align:center;
 	transition:padding-top .4s,background .4s
 }
 .overlay-content a{
@@ -165,95 +100,106 @@ body, html {
 	transform:translateY(20px);
 	transition:opacity .5s,transform .5s
 }
+
+/* nme */
 .name-container{
-	padding:30px
+	padding:2rem;
+	margin-top: .2rem;
+	background:#fff;
+	color:#000
 }
 .name{
-	display:flex;
 	flex-wrap:wrap;
 	justify-content:center;
-	text-align:center;
-	font-size:25px;
-	color:#2c2d42;
-	gap:2rem
+	font-size:1.5rem;
+	color:#2c2d42
 }
 .name h3{
-	font-size:20px;
 	color:#2c2d42;
 	font-weight:300;
 	align-items:center
 }
-
-.image-caption,.site-footer{
-	text-align:center;
-	font-family:'Goudy Old Style',serif;
+/* chive */
+.archive-section{
+	padding:0 5% 2rem;
+	background:#fff;
 	color:#000
 }
 .archive-section .text-row{
-	display:flex;
 	flex-wrap:wrap;
 	justify-content:center;
-	text-align:center;
 	font-size:14px;
 	line-height:1.5em;
-	color:#2c2d42;
-	gap:2rem
+	color:#2c2d42
 }
 .archive-section .text-row a{
 	text-decoration:none;
 	color:#2c2d42;
 	font-weight:400
 }
-.archive-section .text-row a:hover,.footer-links a:hover,.image-caption a:hover .subtitle,.image-caption a:hover .title{
+.archive-section .text-row a:hover,.footer-links a:hover{
 	text-decoration:underline
 }
-.footer-links a,.image-caption a,.image-caption a .subtitle,.image-caption a .title{
-	text-decoration:none
-}
-.image-section{
-	display:flex;
-	flex-direction:column;
-	gap:3rem;
-	padding:0 4rem;
-	position:relative
-}
-.floating-image-block{
-	width:100%;
-	max-width:100%;
-	position:relative
-}
-.floating-image-block img{
-	width:40%;
-	height:auto;
-	display:block;
-	margin:0 auto;
-	object-fit:contain;
-	position:relative;
-	transform:translateX(var(--x-offset));
-	transition:transform .4s
-}
-.image-caption{
-	margin-top:1rem;
-	font-size:1rem
-}
-.image-caption a{
-	color:inherit;
-	display:inline-block
-}
-.image-caption .title{
-	font-size:1.25rem;
-	text-transform:uppercase
-}
-.image-caption .subtitle{
-	font-size:1rem;
-	opacity:.7
+
+/* hero */
+.hero-row {
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+  height: auto;
+  position: relative;
+  overflow: visible;
 }
 
+.hero-image {
+  width: 50%;
+  height: 100%;
+}
+.hero-text {
+  width: 100%;
+  margin-top: -10vh;
+  padding: 2rem 1.5rem;
+  /* background-color: rgba(255,255,255,0.85); */
+  position: relative;
+  z-index: 2;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% center;
+  display: block;
+}
+
+.hero-text {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin-left: -15vw;
+  height: auto;
+}
+
+.hero-blurb {
+  width: 100%;
+  padding: 2rem 3rem;
+}
+
+.hero-blurb p {
+  font-size: 2.5rem;
+  line-height: 4rem;
+  margin-top: 2rem;
+  font-weight: 400;
+}
 
 .site-footer{
 	width:100%;
+	text-align: center;
 	padding:2rem 1rem;
-	background-color:transparent
+	background-color:transparent;
+	color:#000
 }
 .footer-links{
 	margin-bottom:1rem
@@ -261,6 +207,7 @@ body, html {
 .footer-links a{
 	margin:0 10px;
 	color:inherit;
+	text-decoration:none;
 	font-size:.875rem;
 	letter-spacing:.05em
 }
@@ -269,62 +216,94 @@ body, html {
 	opacity:.7
 }
 
-
-/* @media (max-width:768px){
-	.image-section{
-		padding:2rem 1rem;
-		gap:3rem
-}
-	.floating-image-block img{
-		width:90%;
-		max-width:100%;
-		transform:none!important
-}
-	.floating-image-block{
-		padding:0;
-		margin-bottom:2rem
-}
-	.hamburger{
-		position:fixed;
-		top:20px;
-		left:20px;
-		z-index:100
-}
-	.overlay-content a{
-		font-size:18px;
-		margin:16px 0
-}
-	.footer-links{
-		gap:.5rem
-}
-	.footer-links a{
-		font-size:1rem
-}
-	.footer-credit{
-		font-size:.75rem
-}
-	.image-caption .title{
-		font-size:1.1rem
-}
-	.image-caption .subtitle{
-		font-size:.9rem
-}
-	.image-grid{
-		grid-template-columns:1fr;
-		position:relative;
-		height:100vh;
-		width:100%;
-		overflow:hidden
-}
-}
-
-.desktop-only {
-  display: block;
-}
-
+/* ---- Mobile ---- */
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none;
+  .overlay-content a {
+    font-size: 1.2;
+    margin: 1rem 0;
+  }
+
+ .archive-section .text-row {
+    gap: 1.8rem;
+    font-size: 1rem;
+  }
+  .hero-row {
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    width: 100%;
+    /* height: 70vh; */
+  }
+
+  .hero-image img {
+    object-position:center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-text {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-blurb {
+    max-width: 100%;
+    text-align: left;
+	margin-left: 15%;
+	margin-top: -10%;
+  }
+
+  .hero-blurb p {
+    line-height: 2.5rem;
+    margin-top: 1rem;
   }
 }
- */
+
+@media (max-width: 425px) {
+  .name-container {
+    padding: 1.8rem 1rem;
+  }
+
+  .name h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .archive-section .text-row {
+	font-size: .9rem;
+  }
+  .text-row {
+	gap: .5rem;
+	font-size: .8rem;
+  }
+
+
+  .hamburger {
+    top: 10px;
+    left: 10px;
+  }
+    .hero-blurb {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+    margin-top: -30%
+    box-sizing: border-box;
+  }
+
+  .hero-blurb p {
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+

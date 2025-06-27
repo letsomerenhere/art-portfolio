@@ -346,7 +346,9 @@ cursor: pointer;
     top: 50%;
     transform: translateY(-50%);
   }
-  
+    .archive-section{
+	padding:0;
+}
 }
 
 @media (max-width: 425px) {
@@ -360,9 +362,13 @@ cursor: pointer;
   }
 
   .archive-section .text-row {
-	font-size: 12px;
-	padding: 0 1rem;
+	font-size: .9rem;
   }
+  .text-row {
+	gap: .5rem;
+	font-size: .8rem;
+  }
+
 
   .hamburger {
     top: 10px;
@@ -392,7 +398,6 @@ cursor: pointer;
 		height:auto;
 		margin:0 auto
 }
-
 }
 
 

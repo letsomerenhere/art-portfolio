@@ -17,7 +17,6 @@
 .archive-section,.name-container{
 	font-family:'Monotype Goudy Modern',serif
 }
-
 *{
 	margin:0;
 	padding:0;
@@ -182,7 +181,6 @@ body,html{
   opacity: 1;
   transform: translateY(0);
 }
-
 /* fcybox */
 .fancybox__container,.fancybox__toolbar{
 	--carousel-button-svg-width:35px;
@@ -251,6 +249,7 @@ body,html{
 cursor: pointer;
 }
 
+
 .carousel__button.is-close:hover,
 .carousel__button.is-next:hover,
 .carousel__button.is-prev:hover{
@@ -301,8 +300,8 @@ cursor: pointer;
     margin: 1rem 0;
   }
 
- .archive-section .text-row {
-    gap: 1.8rem;
+  .archive-section .text-row {
+    gap: 1.2rem;
     font-size: 1rem;
   }
 
@@ -353,6 +352,9 @@ cursor: pointer;
     top: 50%;
     transform: translateY(-50%);
   }
+    .archive-section{
+	padding:0;
+}
   
 }
 
@@ -367,10 +369,13 @@ cursor: pointer;
   }
 
   .archive-section .text-row {
-	font-size: 12px;
-	padding: 0 1rem;
+	font-size: .9rem;
   }
-
+  .text-row {
+	gap: .5rem;
+	font-size: .8rem;
+  }
+  
   .hamburger {
     top: 10px;
     left: 10px;

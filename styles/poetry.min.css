@@ -285,7 +285,10 @@ body,html{
 
   .archive-section .text-row {
 	font-size: .9rem;
-	padding: 0 1rem;
+  }
+  .text-row {
+	gap: .5rem;
+	font-size: .8rem;
   }
 
   .hamburger {
