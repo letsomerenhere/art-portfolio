@@ -10,6 +10,15 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 .overlay-menu.open,.overlay-menu.open .overlay-content a{
 	opacity:1;
 	transform:translateY(0)
@@ -293,7 +302,7 @@ body,html{
     width: 100%;
     max-width: 100%;
     padding: 1.5rem;
-    margin-top: -30%
+    margin-top: -30%;
     box-sizing: border-box;
   }
 
