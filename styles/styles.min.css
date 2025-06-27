@@ -267,12 +267,14 @@ body,html{
     max-width: 100%;
     text-align: left;
 	margin-left: 15%;
-	margin-top: -10%;
+	margin-top: -6%;
   }
 
-  .hero-blurb p {
-    line-height: 2.5rem;
+    .hero-blurb p {
+    line-height: 1.5rem;
     margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
   }
 }
 
