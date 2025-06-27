@@ -9,10 +9,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="styles/styles.min.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/image/icon.png">
+<!-- 
+  <link rel="preload" as="image" href="image/hero-header1_top-600.jpg" />
+  <link rel="preload" as="image" href="image/hero-header1_bottom-600.jpg" />
+ -->
 </head>
-
 <body>
+
 <header>
+
   <button class="hamburger hamburger--collapse" type="button" id="hamburger" aria-label="Menu-button" aria-controls="menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -28,56 +33,50 @@
     <a href="/photography">Photography</a>
     <a href="/poetry">Poetry</a> 
   </div>
-</div>
+
 </header>
 
-<section class="slideshow">
-  <img src="/image/headers/hero-header1_1200.webp" class="slide active" alt="Slide 1">
-  <img src="/image/headers/hero-header2_1200.webp" class="slide" alt="Slide 2">
-  <img src="/image/headers/hero-header3_1200.webp" class="slide" alt="Slide 3">
+<section class="archive-section">
+  <div class="text-row">
+  <p><b>Jacob Thomas Khalil</b></p>
+    <a href="/fashion">Fashion</a>
+    <a href="/illustration">Illustration</a>
+    <a href="/painting">Painting</a>
+    <a href="/photography">Photography</a>
+    <a href="/poetry">Poetry</a>
+  </div>
 </section>
 
+<section class="image-section">
+  </div>
 
-<section class="feature-links">
-  <a href="fashion/index.html" class="feature-block offset-left-medium">
-    <img src="image/fashion/vesper-ix/vespers_look1_blur_1200.webp" alt="Fashion" style="width: 65%;">
-    <div class="caption feature-block offset-left-medium">FASHION</div>
-  </a>
+    <picture>
+      <source srcset="/image/headers/hero-header2_400.webp 400w, 
+      /image/headers/hero-header2_800.webp 800w, 
+      /image/headers/hero-header2_1200.webp 1200w" sizes="50vw" type="image/webp">
+      <img src="/image/headers/hero-header2_800.webp" alt="Hero 2">
+    </picture>
 
-  <a href="illustration/index.html" class="feature-block offset-right-medium">
-    <img src="image/illustration/digital/digital2_1200.webp" alt="Illustration" style="width: 95%;">
-    <div class="caption">Illustration</div>
-  </a>
-
-  <a href="painting/index.html" class="feature-block offset-right-small">
-    <img src="image/painting/painting2_1200.webp" alt="Painting" style="width: 65%;">
-    <div class="caption">Painting</div>
-  </a>
-
-  <a href="photography/index.html" class="feature-block offset-left-small">
-    <img src="image/photography/angel-clover/angel-clover11_1200.webp" alt="Photography" style="width: 95%;">
-    <div class="caption" style="text-align: right;margin-right: 4rem;">Photography</div>
-  </a>
-
-  <a href="poetry/index.html" class="feature-block offset-right-small">
-    <img src="image/poetry/poetry3_1200.webp" alt="Poetry" style="width: 80%;">
-    <div class="caption">Poetry</div>
-  </a>
+        <picture>
+      <source srcset="/image/headers/hero-header3_400.webp 400w, 
+      /image/headers/hero-header3_800.webp 800w, 
+      /image/headers/hero-header3_1200.webp 1200w" sizes="50vw" type="image/webp">
+      <img src="/image/headers/hero-header3_800.webp" alt="Hero 2">
+    </picture>
+  </div>
 </section>
-
-
 
 
 <!-- Footer -->
 <footer class="site-footer">
   <div class="footer-links">
-    <a href="tel:5038475055" target="_blank" aria-label="Telephone">
+    <a href="tel:5038475055" target="_blank.jpg" aria-label="Telephone">
   <i style="font-size:24px" aria-hidden="true" class="fa">&#xf095;</i>
   </a>
-  <a href="mailto:jacobsmaskoff@gmail.com" target="_blank" aria-label="Email">
+  <a href="mailto:jacobsmaskoff@gmail.com" target="_blank.jpg" aria-label="Email">
   <i style="font-size:24px" aria-hidden="true" class="fa">&#xf0e0;</i>
   </a>
-    <a href="https://www.instagram.com/jacobsmaskoff/" target="_blank" aria-label="Instagram">
+    <a href="https://www.instagram.com/jacobsmaskoff/" target="_blank.jpg" aria-label="Instagram">
       <i class="fa fa-instagram" aria-hidden="true" style="font-size:24px"></i>
     </a>
   </div>
@@ -89,18 +88,19 @@
 <script src="main.min.js" type="text/javascript"></script>
 
 <script>
-  const slides = document.querySelectorAll('.slide');
-  let current = 0;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
 
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-  }, 6000); // 6 second delay
+  document.querySelectorAll('.parallax-half img').forEach((img, i) => {
+    // Parallax: image is 100vh, container is 50vh, so max shift is 50vh
+    const maxShift = window.innerHeight / 2;
+    let shift = scrollY * 0.7; // adjust 0.7 for more/less effect
+    if (shift > maxShift) shift = maxShift;
+    if (shift < 0) shift = 0;
+    img.style.transform = `translateY(-${shift}px)`;
+  });
+});
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
